@@ -22,6 +22,10 @@ Antes de ejecutar este proyecto, asegúrate de tener instalado:
    ```bash
    npm install dotenv
 
+4. Instala jest:
+   ```bash
+   npm install --save-dev jest supertest
+   
 ## **Uso**
 1. Inicia el servidor:
    ```bash
