@@ -51,7 +51,6 @@ app.get('/estacionamiento', async (req, res) => {
         const data = {};
         // Iterar sobre cada clave en parkingSpots
         Object.keys(parkingSpots).forEach(spot => {
-            console.log("parkingSpots"+ spot)
             const spotNumber = spot.match(/\d+$/); // Extrae el número al final de la clave
             const status = parkingSpots[spot][0].value === 'true' ? 'ocupado' : 'disponible'; // Asigna estado basado en el valor
             data[`Lugar n° ${spotNumber}`] = status; // Formato deseado
