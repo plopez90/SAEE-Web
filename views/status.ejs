@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estacionamiento SAEE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .parking-lot {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px;
+            width: 80%;
+        }
+
+        .parking-spot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .ocupado {
+            background-color: #d9534f; /* Rojo */
+        }
+
+        .disponible {
+            background-color: #5cb85c; /* Verde */
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #333;
+            color: white;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estado del estacionamiento</h1>
+    <div class="parking-lot">
+        <% for (let field in data) { %>
+            <div class="parking-spot <%= data[field] %>">
+                <%= field %>
+            </div>
+        <% } %>
+    </div>
+    <footer>
+        &copy; 2025 SAEE - Sistema Avanzado para Estacionamientos Eficientes
+    </footer>
+</body>
+</html>
