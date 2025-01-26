@@ -47,12 +47,17 @@ app.get('/estacionamiento', async (req, res) => {
         });
 
         const parkingSpots = response.data; // Obtener los datos
-        
+
+        const numberToStatusMap = Object.entries(parkingSpots)
+            .map(([key, value]) => {
+                const spotNumber = parseInt(key.match(/\d+$/), 10); // Extrae el número
+                const status = value[0].value === 'true' ? 'ocupado' : 'disponible'; // Determina el estado
+                return { spotNumber, status }; // Retorna un objeto con número y estado
+            })
+            .sort((a, b) => a.spotNumber - b.spotNumber); // Ordenar
+
         const data = {};
-        // Iterar sobre cada clave en parkingSpots
-        Object.keys(parkingSpots).forEach(spot => {
-            const spotNumber = spot.match(/\d+$/); // Extrae el número al final de la clave
-            const status = parkingSpots[spot][0].value === 'true' ? 'ocupado' : 'disponible'; // Asigna estado basado en el valor
+        numberToStatusMap.forEach(({ spotNumber, status }) => {
             data[`Lugar n° ${spotNumber}`] = status; // Formato deseado
         });
 
